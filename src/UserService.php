@@ -42,7 +42,7 @@ class UserService
     public function getUser()
     {
 
-        $response = Http::withHeaders($this->headers())->get(self::USERS_MICROSERVICE_API . '/user');
+        $response = Http::withHeaders($this->headers())->get($this->USERS_MICROSERVICE_API . '/user');
         $json = $response->json();
 
         return new User($json);
@@ -51,12 +51,12 @@ class UserService
 
     public function isAdmin(){
 
-        return Http::withHeaders($this->headers())->get(self::USERS_MICROSERVICE_API . '/admin')->successful();
+        return Http::withHeaders($this->headers())->get($this->USERS_MICROSERVICE_API . '/admin')->successful();
     }
 
     public function isPromotor(){
 
-        return Http::withHeaders($this->headers())->get(self::USERS_MICROSERVICE_API . '/promotor')->successful();
+        return Http::withHeaders($this->headers())->get($this->USERS_MICROSERVICE_API . '/promotor')->successful();
     }
 
     public function allows($action, $route){
@@ -64,27 +64,27 @@ class UserService
     }
 
     public function all($page){
-        return Http::withHeaders($this->headers())->get(self::USERS_MICROSERVICE_API . '/users?page=' . $page)->json();
+        return Http::withHeaders($this->headers())->get($this->USERS_MICROSERVICE_API . '/users?page=' . $page)->json();
 
     }
 
     public function get($id): User{
-       $json = Http::withHeaders($this->headers())->get(self::USERS_MICROSERVICE_API . '/users/' . $id)->json();
+       $json = Http::withHeaders($this->headers())->get($this->USERS_MICROSERVICE_API . '/users/' . $id)->json();
         return new User($json);
     }
 
     public function create($data){
-        $json = Http::withHeaders($this->headers())->post(self::USERS_MICROSERVICE_API . '/users', $data)->json();
+        $json = Http::withHeaders($this->headers())->post($this->USERS_MICROSERVICE_API . '/users', $data)->json();
         return new User($json);
     }
 
     public function update($id, $data){
-        $json = Http::withHeaders($this->headers())->put(self::USERS_MICROSERVICE_API . '/users/' . $id, $data)->json();
+        $json = Http::withHeaders($this->headers())->put($this->USERS_MICROSERVICE_API . '/users/' . $id, $data)->json();
         return new User($json);
     }
 
     public function delete($id){
-        return Http::withHeaders($this->headers())->delete(self::USERS_MICROSERVICE_API . '/users/' . $id)->successful();
+        return Http::withHeaders($this->headers())->delete($this->USERS_MICROSERVICE_API . '/users/' . $id)->successful();
     }
 
 }
