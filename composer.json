@@ -1,0 +1,15 @@
+{
+    "name": "jesussanchez/common",
+    "description": "Paquete para microservicios personales.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JB2608",
+            "email": "alberto260895@gmail.com"
+        }
+    ],
+    "require": {
+    	"laravel/framework": "^7.0"
+    }
+}
